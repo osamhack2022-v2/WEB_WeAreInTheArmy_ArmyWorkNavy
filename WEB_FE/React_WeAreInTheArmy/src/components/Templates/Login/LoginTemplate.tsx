@@ -26,7 +26,6 @@ export default function LoginTemplate() {
           password,
         })
         .then((res) => {
-          console.log(res.data.user);
           setUser(res.data.user);
           const token = res.data.accessToken;
           localStorage.setItem('jwtToken', token);

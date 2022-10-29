@@ -41,12 +41,10 @@ export default function SignupTemplate() {
         address,
       })
       .then((res) => {
-        console.log('hello');
         handleModalOpen();
       })
       .catch((e) => {
         setError(true);
-        console.log(e);
       });
   };
   const [identifier, setIdentifier] = useState<string>('');
@@ -63,7 +61,6 @@ export default function SignupTemplate() {
   const handleChangeType = (newtype: AccountTypes) => {
     setType(newtype);
   };
-  console.log(type);
 
   const [name, setName] = useState<string>('');
   const handleChangeName = (newName: string) => {
@@ -90,7 +87,6 @@ export default function SignupTemplate() {
     setAddress(newAddress);
   };
   const [error, setError] = useState<boolean>(false);
-  console.log(error);
   const naviate = useNavigate();
 
   const [timer, setTimer] = useState<number>(3);

@@ -22,9 +22,7 @@ import { useUserState } from './context/UserContext';
 
 function App() {
   const state = useUserState();
-  console.log(state.user);
   const location = useLocation();
-  console.log(location.pathname.split('/')[1]);
   const title = Url.find((v) => {
     return v.to === '/' + location.pathname.split('/')[1];
   });

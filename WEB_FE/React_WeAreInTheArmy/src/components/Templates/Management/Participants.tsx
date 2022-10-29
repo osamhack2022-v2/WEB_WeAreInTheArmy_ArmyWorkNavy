@@ -14,7 +14,6 @@ export default function Participants({
   const part = JSON.parse(participants);
   const soldiers: { name: string; serial_number: string; unit: string }[] =
     Array.from(Object.values(part.soldiers));
-  console.log(soldiers);
 
   return (
     <Table>

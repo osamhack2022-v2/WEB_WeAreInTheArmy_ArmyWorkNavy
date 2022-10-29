@@ -32,8 +32,6 @@ export default function PostTemplate() {
       .get('/api/board/getBoardByIndex/' + locations.pathname.match(/\d+/)?.[0])
       .then((res) => setPost(res.data));
   }, []);
-  console.log(post);
-  console.log(post);
   return (
     <Paper className="w-[900px]">
       <SemiHeader

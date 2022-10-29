@@ -24,17 +24,14 @@ export default function TestTemplate() {
 
       const formData = new FormData();
       formData.append('image', e.target.files[0]);
-      console.log(e.target.files);
-      client
-        .post('/api/board/createBoard', {
-          type: RequestTypes.DEFAULT,
-          title: 'string',
-          description: 'string',
-          location: 'string',
-          admit: true,
-          image: e.target.files[0].name,
-        })
-        .then((res) => console.log(res));
+      client.post('/api/board/createBoard', {
+        type: RequestTypes.DEFAULT,
+        title: 'string',
+        description: 'string',
+        location: 'string',
+        admit: true,
+        image: e.target.files[0].name,
+      });
     },
     [],
   );

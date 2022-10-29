@@ -42,7 +42,6 @@ const HelpMap = ({ posts }: { posts: Post[] }) => {
       });
     });
   }, []);
-  console.log(markers);
   return (
     <div className="p-5 h-full mb-3 w-[800px]">
       {loading === false ? (

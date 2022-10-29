@@ -28,9 +28,7 @@ export default function ApplyTemplate() {
   const [modal, setModal] = useState<string>('');
   const defaultInformationState = useDefaultInformationState();
   const applyDataState = useApplyDataState();
-  console.log(defaultInformationState, applyDataState);
   const createBoard = () => {
-    console.log(client.defaults);
     client
       .post(
         '/api/board/createBoard',
