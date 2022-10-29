@@ -9,15 +9,21 @@ export enum RequestTypes {
     DEFAULT = "default"
 }
 
+export enum AcceptanceStatus {
+    PENDING = "pending",
+    ACCPEPTED = "accepted",
+    DENIED = "denied",
+}
+
 @Entity()
 export class Board extends BaseEntity {
     @PrimaryGeneratedColumn()
     @ApiProperty({ description: "[primary] index" })
     idx: number;
     
-    // @Column()
-    // @ApiProperty({ description: "identifier" })
-    // identifier: string;
+    @Column()
+    @ApiProperty({ description: "identifier" })
+    identifier: string;
     
     @Column({
         type: "enum",
@@ -47,9 +53,21 @@ export class Board extends BaseEntity {
     @ApiProperty({ description: "image of the place" })
     image: string;
 
-    @Column({ nullable: true })
-    @ApiProperty({ description: "who accepted the request" })
-    acceptedBy: string;
+    @Column({
+        type: "enum",
+        enum: AcceptanceStatus,
+        default: AcceptanceStatus.PENDING,
+    })
+    @ApiProperty({ description: "Acceptance Status: pending, accepted, denied" })
+    status: AcceptanceStatus;
+
+    @Column()
+    @ApiProperty({ description: "done or not" })
+    done: boolean;
+
+    @Column({ type: "longtext", nullable: true })
+    @ApiProperty({ description: "json data of admin/soldier on the request" })
+    participants: string;
 
     @CreateDateColumn()
     @ApiProperty({ description: "createdAt - auto created" })

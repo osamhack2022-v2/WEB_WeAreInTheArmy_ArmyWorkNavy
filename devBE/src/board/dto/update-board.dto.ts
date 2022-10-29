@@ -1,6 +1,6 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { RequestTypes } from '../entities/board.entity';
+import { IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString, IsObject } from 'class-validator';
+import { AcceptanceStatus, RequestTypes } from '../entities/board.entity';
 import { CreateBoardDto } from './create-board.dto';
 
 export class UpdateBoardDto extends PartialType(CreateBoardDto) {
@@ -36,8 +36,18 @@ export class UpdateBoardDto extends PartialType(CreateBoardDto) {
     image: string;
 
     @IsOptional()
-    @IsString()
-    @ApiProperty({description: "[opt] who accepted the request"})
-    acceptedBy: string;
+    @IsEnum(AcceptanceStatus)
+    @ApiProperty({description: "Acceptance Status: pending, accepted, denied"})
+    status: AcceptanceStatus;
+
+    @IsOptional()
+    @IsBoolean()
+    @ApiProperty({description: "done or not" })
+    done: boolean;
+
+    @IsOptional()
+    @IsObject()
+    @ApiProperty({description: "json data of admin/soldier on the request"})
+    participants: boolean;
 
 }
