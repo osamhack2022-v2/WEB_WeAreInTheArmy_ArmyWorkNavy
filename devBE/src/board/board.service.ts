@@ -45,9 +45,13 @@ export class BoardService {
   async getAllBoards(): Promise<Board[]> {
     return this.boardRepository.find();
   }
-
+  
   async getAllUndoneBoards(): Promise<Board[]> {
     return this.boardRepository.findBy({done:false});
+  }
+
+  async getAllDoneBoards(): Promise<Board[]> {
+    return this.boardRepository.findBy({done:true});
   }
 
   async getBoardsbyIdentifier(identifier: string): Promise<Board[]> {
