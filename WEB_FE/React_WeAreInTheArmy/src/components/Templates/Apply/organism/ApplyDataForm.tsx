@@ -1,3 +1,4 @@
+import { RequestTypes } from 'src/type';
 import {
   RequestCategory,
   useApplyDataDispatch,
@@ -30,7 +31,12 @@ export default function ApplyDataForm() {
         />
         <RequestCategorySelect
           label="요청분류"
-          options={[{ label: 'help', value: 'help' }]}
+          options={[
+            { label: 'help', value: RequestTypes.DEFAULT },
+            { label: 'help', value: RequestTypes.DISASTOR },
+            { label: 'help', value: RequestTypes.ENVIROMENTAL },
+            { label: '사회', value: RequestTypes.SOCIAL },
+          ]}
           dispatch={setRequestCategory}
         />
         <DescriptionArea label="내용" dispatch={setDescription} />

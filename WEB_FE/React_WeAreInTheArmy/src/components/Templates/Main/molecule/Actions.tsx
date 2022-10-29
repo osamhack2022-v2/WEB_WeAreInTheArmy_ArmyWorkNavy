@@ -6,7 +6,7 @@ export default function Actions() {
     <FlexContainer className="w-full bg-white justify-center p-10">
       <FlexContainer className="w-[800px] justify-between">
         <ActionWrapper
-          src="/public/assets/imgs/MainPage/icon_fire.png"
+          src="/assets/imgs/MainPage/icon_fire.png"
           messages={
             <div>
               신속하고 정확하게 <br /> 효율적으로 재난 피해 회복
@@ -14,7 +14,7 @@ export default function Actions() {
           }
         />
         <ActionWrapper
-          src="/public/assets/imgs/MainPage/icon_people.png"
+          src="/assets/imgs/MainPage/icon_people.png"
           messages={
             <div>
               쉽고 간편하게 <br />
@@ -23,7 +23,7 @@ export default function Actions() {
           }
         />
         <ActionWrapper
-          src="/public/assets/imgs/MainPage/icon_soldier.png"
+          src="/assets/imgs/MainPage/icon_soldier.png"
           messages={
             <div>
               군에 대한
@@ -33,7 +33,7 @@ export default function Actions() {
           }
         />
         <ActionWrapper
-          src="/public/assets/imgs/MainPage/icon_travel.png"
+          src="/assets/imgs/MainPage/icon_travel.png"
           messages={
             <div>
               용사에게는 큰 동기가 <br />
