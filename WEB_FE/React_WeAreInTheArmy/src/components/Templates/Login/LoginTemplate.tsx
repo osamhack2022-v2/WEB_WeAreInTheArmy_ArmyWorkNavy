@@ -2,6 +2,8 @@ import { Modal } from 'flowbite-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DangerToast } from 'src/components/UI/Toast';
+import { useUserDispatch } from 'src/context/UserContext';
+import { User } from 'src/type';
 import { client } from 'src/util/client';
 import { setAuthroizationToken } from 'src/util/utils';
 import Button from '../../UI/Button';
@@ -11,26 +13,29 @@ import Paper from '../../UI/Paper';
 import Text from '../../UI/Text';
 
 export default function LoginTemplate() {
+  const dispatch = useUserDispatch();
+  const setUser = (user: User) => {
+    dispatch({ type: 'SET_USER', user: user });
+  };
   const navigate = useNavigate();
-  const signin = async () => {
+  const signin = () => {
     try {
-      await client
-        .post('/absproxy/3000/api/auth/signin', {
+      client
+        .post('/api/auth/signin', {
           identifier,
           password,
         })
         .then((res) => {
+          console.log(res.data.user);
+          setUser(res.data.user);
           const token = res.data.accessToken;
           localStorage.setItem('jwtToken', token);
           setAuthroizationToken(token);
-        });
+        })
+        .then(() => navigate('/'))
+        .catch(() => setOpen(true));
     } catch (e) {
       console.log('error!', e);
-    }
-    if (localStorage.getItem('jwtToken') === null) {
-      setOpen(true);
-    } else {
-      navigate('/');
     }
   };
   const [identifier, setIdentifier] = useState<string>('');

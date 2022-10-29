@@ -16,8 +16,13 @@ import { useEffect } from 'react';
 import { client } from './util/client';
 import { PostProvider, usePostDispatch } from './context/PostContext';
 import { Post } from './type';
+import ManagementTemplate from './components/Templates/Management/ManagementTemplate';
+import ManagementAcceptTemplate from './components/Templates/Management/ManagementAcceptTemplate';
+import { useUserState } from './context/UserContext';
 
 function App() {
+  const state = useUserState();
+  console.log(state.user);
   const location = useLocation();
   console.log(location.pathname.split('/')[1]);
   const title = Url.find((v) => {
@@ -28,9 +33,7 @@ function App() {
     dispatch({ type: 'SET_POSTS', posts: posts });
   };
   useEffect(() => {
-    client
-      .get('/absproxy/3000/api/board/getAllBoards')
-      .then((res) => setPost(res.data));
+    client.get('/api/board/getAllBoards').then((res) => setPost(res.data));
   }, []);
 
   return (
@@ -51,9 +54,14 @@ function App() {
 
           <TemplateWrapper>
             <Routes>
-              <Route path="absproxy/5173/login" element={<LoginTemplate />} />
+              <Route path="/login" element={<LoginTemplate />} />
               <Route path="/status" element={<StatusTemplate />} />
-              {<Route path="/status/:id" element={<PostTemplate />} />}
+              {
+                <Route
+                  path="/status/:id"
+                  element={<ManagementAcceptTemplate />}
+                />
+              }
               <Route path="/signup" element={<SignupTemplate />} />
               <Route path="/participate" element={<ParticipateTemplate />} />
               <Route
@@ -65,6 +73,7 @@ function App() {
                 }
               />
               <Route path="/test" element={<TestTemplate />} />
+              <Route path="/management" element={<ManagementTemplate />} />
             </Routes>
           </TemplateWrapper>
         </FlexContainer>

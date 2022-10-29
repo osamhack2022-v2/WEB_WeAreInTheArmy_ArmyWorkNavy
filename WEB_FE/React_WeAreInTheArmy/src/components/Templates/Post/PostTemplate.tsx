@@ -5,7 +5,7 @@ import Divider from 'src/components/UI/Divider';
 import FlexContainer from 'src/components/UI/FlexContantainer';
 import Paper from 'src/components/UI/Paper';
 import SemiHeader from 'src/components/UI/SemiHeader';
-import { Board, Post, RequestTypes } from 'src/type';
+import { AcceptanceStatus, Board, Post, RequestTypes } from 'src/type';
 import { client } from 'src/util/client';
 import DefaultInfo from './molecule/DefaultInfo';
 import DetailInfo from './molecule/DetailInfo';
@@ -21,16 +21,18 @@ export default function PostTemplate() {
     title: '',
     type: '',
     updatedAt: '',
+    done: false,
+    identifier: '',
+    participants: '',
+    status: AcceptanceStatus.PENDING,
   });
   const locations = useLocation();
   useEffect(() => {
     client
-      .get(
-        '/absproxy/3000/api/board/getBoardByIndex/' +
-          locations.pathname.match(/\d+/)?.[0],
-      )
+      .get('/api/board/getBoardByIndex/' + locations.pathname.match(/\d+/)?.[0])
       .then((res) => setPost(res.data));
   }, []);
+  console.log(post);
   console.log(post);
   return (
     <Paper className="w-[900px]">
@@ -40,7 +42,11 @@ export default function PostTemplate() {
       />
       <Divider />
       <FlexContainer className="flex-col w-full divide-y divide-slate-200">
-        <DefaultInfo createdAt={post.createdAt} location={post.location} />
+        <DefaultInfo
+          identifier={post.identifier}
+          createdAt={post.createdAt}
+          location={post.location}
+        />
         <DetailInfo
           title={post.title}
           type={post.type as RequestTypes}

@@ -1,3 +1,4 @@
+import { Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import Divider from 'src/components/UI/Divider';
 import FlexContainer from 'src/components/UI/FlexContantainer';
@@ -10,8 +11,12 @@ import StatusBody from './molecule/StatusBody';
 import StatusHead from './molecule/StatusHead';
 
 export default function StatusTemplate() {
-  const state = usePostState();
-  const { posts } = state;
+  const [posts, setPosts] = useState<Post[]>([]);
+  useEffect(() => {
+    client.get('/api/board/getAllBoards').then((res) => {
+      setPosts(res.data);
+    });
+  }, []);
   return (
     <Paper className="w-[900px]">
       <SemiHeader
@@ -21,10 +26,10 @@ export default function StatusTemplate() {
       <Divider />
       <FlexContainer className="flex-col w-full p-4">
         <div className="mb-3">{posts.length}개의 게시물이 있습니다.</div>
-        <table>
+        <Table>
           <StatusHead />
           <StatusBody posts={posts} />
-        </table>
+        </Table>
       </FlexContainer>
     </Paper>
   );

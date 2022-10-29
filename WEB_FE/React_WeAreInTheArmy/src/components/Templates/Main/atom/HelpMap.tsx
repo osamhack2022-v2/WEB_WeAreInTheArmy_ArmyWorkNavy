@@ -15,7 +15,6 @@ const HelpMap = ({ posts }: { posts: Post[] }) => {
     }[]
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
-  console.log(posts);
   useEffect(() => {
     const ps = new kakao.maps.services.Places();
     posts.forEach((v: Post) => {
@@ -38,7 +37,6 @@ const HelpMap = ({ posts }: { posts: Post[] }) => {
             },
             content: data[0].place_name,
           };
-          console.log(marker);
           setMarkers((prev) => [...prev, marker]);
         }
       });
@@ -68,7 +66,7 @@ const HelpMap = ({ posts }: { posts: Post[] }) => {
               key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}-${index}`}
               position={marker.position}
             >
-              <FlexContainer className="label rounded-full bg-slate-300 w-16 h-16 flex-col justify-center items-center opacity-90">
+              <FlexContainer className="label rounded-full bg-red-400 w-24 h-24 flex-col justify-center items-center opacity-20 text-sm">
                 <span className="z-10">{marker.content}</span>
               </FlexContainer>
             </CustomOverlayMap>

@@ -4,7 +4,7 @@ import EssentialMark from '../Templates/Apply/atom/EssentialMark';
 
 interface DefaultInformation {
   label: string;
-  isEssential: boolean;
+  isEssential?: boolean;
   children: React.ReactNode;
 }
 

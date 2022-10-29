@@ -11,6 +11,10 @@ export type Post = {
   idx: number;
   image: string;
   location: string;
+  done: boolean;
+  identifier: string;
+  participants: string;
+  status: AcceptanceStatus;
   title: string;
   type: string;
   updatedAt: string;
@@ -29,29 +33,24 @@ export enum AccountTypes {
   DEFAULT = 'default',
 }
 
+export enum AcceptanceStatus {
+  PENDING = 'pending',
+  ACCPEPTED = 'accepted',
+  DENIED = 'denied',
+}
+
 export type User = {
   idx: number;
-
   identifier: string;
-
   password: string;
-
   type: AccountTypes;
-
   name: string;
-
   phone: string;
-
   organization: string;
-
   email: string;
-
   address: string;
-
   createdAt: Date;
-
   updatedAt: Date;
-
   boards: Board[];
 };
 
@@ -62,32 +61,27 @@ export enum RequestTypes {
   DEFAULT = 'default',
 }
 
-export type Board = {
-  idx: number;
-
-  type: RequestTypes;
-
-  title: string;
-
-  description: string;
-
-  location: string;
-
-  admit: boolean;
-
-  image: string;
-
-  createdAt: Date;
-
-  updatedAt: Date;
-
-  user: User;
-};
-
 export type Marker = {
   position: {
     lat: number;
     lng: number;
   };
   content: string;
+};
+
+export type Board = {
+  idx: number;
+  identifier: string;
+  type: RequestTypes;
+  title: string;
+  description: string;
+  location: string;
+  admit: boolean;
+  image: string;
+  status: AcceptanceStatus;
+  done: boolean;
+  participants: string;
+  createdAt: Date;
+  updatedAt: Date;
+  user: User;
 };

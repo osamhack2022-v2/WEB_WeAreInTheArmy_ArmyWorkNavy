@@ -1,13 +1,13 @@
-import { Accept } from 'src/type';
+import { Accept, AcceptanceStatus } from 'src/type';
 import { client } from './client';
 
-export const acceptConverter = (accept: Accept): string => {
+export const statusConverter = (accept: AcceptanceStatus): string => {
   switch (accept) {
-    case Accept.Pending:
+    case AcceptanceStatus.PENDING:
       return '보류';
-    case Accept.Cancel:
+    case AcceptanceStatus.DENIED:
       return '거부';
-    case Accept.Accept:
+    case AcceptanceStatus.ACCPEPTED:
       return '수락';
     default:
       return 'Error';

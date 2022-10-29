@@ -10,6 +10,9 @@ import Select from '../../UI/Select';
 import Option from 'src/components/UI/Option';
 import { Modal } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
+import { AccountTypes, RequestTypes } from 'src/type';
+import ModalPortal from 'src/components/UI/PortalModal';
+import { DangerToast } from 'src/components/UI/Toast';
 
 // {
 //   "identifierentifier": "string",
@@ -37,7 +40,14 @@ export default function SignupTemplate() {
         email,
         address,
       })
-      .then((res) => console.log(res));
+      .then((res) => {
+        console.log('hello');
+        handleModalOpen();
+      })
+      .catch((e) => {
+        setError(true);
+        console.log(e);
+      });
   };
   const [identifier, setIdentifier] = useState<string>('');
   const handleChangeidentifier = (newidentifier: string) => {
@@ -49,10 +59,11 @@ export default function SignupTemplate() {
     setPassword(newPassword);
   };
 
-  const [type, setType] = useState<string>('');
-  const handleChangeType = (newtype: string) => {
+  const [type, setType] = useState<AccountTypes>(AccountTypes.ADMINISTRATOR);
+  const handleChangeType = (newtype: AccountTypes) => {
     setType(newtype);
   };
+  console.log(type);
 
   const [name, setName] = useState<string>('');
   const handleChangeName = (newName: string) => {
@@ -78,18 +89,24 @@ export default function SignupTemplate() {
   const handleChangeAddress = (newAddress: string) => {
     setAddress(newAddress);
   };
-
+  const [error, setError] = useState<boolean>(false);
+  console.log(error);
   const naviate = useNavigate();
+
   const [timer, setTimer] = useState<number>(3);
-  console.log(timer);
   useEffect(() => {
-    const time = setInterval(() => {
-      setTimer(timer - 1);
-    }, 1000);
-    if (timer === 0) {
-      naviate('/login');
+    if (open) {
+      const time = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+      setTimeout(() => {
+        naviate('/login');
+      }, 3000);
+      if (timer < 0) naviate('/login');
+      return () => {
+        clearInterval(time);
+      };
     }
-    return () => clearInterval(time);
   }, [open]);
 
   return (
@@ -175,13 +192,13 @@ export default function SignupTemplate() {
               />
               <Select
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                  setType(e.target.value)
+                  handleChangeType(e.target.value as AccountTypes)
                 }
               >
-                <Option value="administrator">관리자</Option>
-                <Option value="citizen">이용자</Option>
-                <Option value="millitary">군인</Option>
-                <Option value="default">기타</Option>
+                <Option value={AccountTypes.ADMINISTRATOR}>관리자</Option>
+                <Option value={AccountTypes.CITIZEN}>시민</Option>
+                <Option value={AccountTypes.MILLITARY}>현역 장병</Option>
+                <Option value={AccountTypes.DEFAULT}>기타</Option>
               </Select>
               <Input
                 value={name}
@@ -237,7 +254,6 @@ export default function SignupTemplate() {
             className="mb-3"
             onClick={() => {
               handleSubmitSignup();
-              handleModalOpen();
             }}
           >
             회원가입
@@ -245,12 +261,24 @@ export default function SignupTemplate() {
         </FlexContainer>
       </Paper>
       <Modal show={open} size="md" popup={open} onClose={handleModalClose}>
-        <Modal.Header />
+        <Modal.Header></Modal.Header>
         <Modal.Body>
           <div className="text-center">회원가입이 신청되었습니다. </div>
           <div className="text-center">
             {timer}초 뒤 로그인화면으로 돌아갑니다.{' '}
           </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={error}
+        size="md"
+        popup={error}
+        onClose={() => setError(false)}
+      >
+        <Modal.Body>
+          <Modal.Header></Modal.Header>
+          <DangerToast message="회원가입에 실패하였습니다. " />
+          <div>값을 다시 입력해주세요.</div>
         </Modal.Body>
       </Modal>
     </FlexContainer>

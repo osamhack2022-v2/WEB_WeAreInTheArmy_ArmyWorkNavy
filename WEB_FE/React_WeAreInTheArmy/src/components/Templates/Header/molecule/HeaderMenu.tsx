@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from 'src/components/UI/Button';
 import { client } from 'src/util/client';
 import { URL } from '../../../../data/url';
@@ -14,16 +15,21 @@ export default function HeaderMenu() {
         ))}
       </FlexContainer>
       {localStorage.getItem('jwtToken') === null ? (
-        <Menu
-          to="absproxy/5173/login"
-          name="로그인"
-          src="../../../../../public/assets/imgs/Header/people.png"
-        ></Menu>
+        <li>
+          <Link to="/login" className="flex">
+            <img
+              src={'/assets/imgs/Header/people.png'}
+              className="w-[25px] h-[25px]"
+            />
+            <strong>로그인</strong>
+          </Link>
+        </li>
       ) : (
         <Button
           onClick={() => {
             localStorage.removeItem('jwtToken');
             client.defaults.headers.common['Authorization'] = '';
+            window.location.reload();
           }}
         >
           로그아웃

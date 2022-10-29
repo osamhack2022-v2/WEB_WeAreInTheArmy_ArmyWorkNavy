@@ -1,5 +1,8 @@
+import { Modal } from 'flowbite-react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/UI/Button';
+import { DangerToast, SuccessToast } from 'src/components/UI/Toast';
 import { client } from 'src/util/client';
 import {
   useApplyDataState,
@@ -22,27 +25,35 @@ import DefaultInformationForm from './organism/DefaultInformationForm';
 // }
 
 export default function ApplyTemplate() {
+  const [modal, setModal] = useState<string>('');
   const defaultInformationState = useDefaultInformationState();
   const applyDataState = useApplyDataState();
   console.log(defaultInformationState, applyDataState);
   const createBoard = () => {
     console.log(client.defaults);
-    client.post(
-      '/absproxy/3000/api/board/createBoard',
-      {
-        type: applyDataState.requestCategory,
-        title: applyDataState.title,
-        description: applyDataState.description,
-        location: defaultInformationState.location,
-        admit: true,
-        image: 'string',
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+    client
+      .post(
+        '/api/board/createBoard',
+        {
+          type: applyDataState.requestCategory,
+          title: applyDataState.title,
+          description: applyDataState.description,
+          location: defaultInformationState.location,
+          admit: true,
+          image: 'string',
         },
-      },
-    );
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          },
+        },
+      )
+      .then((res) => {
+        setModal('success');
+      })
+      .catch((e) => {
+        setModal('error');
+      });
   };
   const navigate = useNavigate();
   return (
@@ -61,10 +72,31 @@ export default function ApplyTemplate() {
         <Button size="lg" onClick={() => navigate('/')}>
           취소하기
         </Button>
-        <Button size="lg" onClick={createBoard}>
+        <Button
+          size="lg"
+          onClick={() => {
+            createBoard();
+          }}
+        >
           제출하기
         </Button>
       </FlexContainer>
+      <Modal
+        show={modal !== ''}
+        popup={modal !== ''}
+        onClose={() => setModal('')}
+      >
+        <Modal.Header></Modal.Header>
+        <Modal.Body>
+          {modal === 'success' && <SuccessToast message="제출되었습니다." />}
+          {modal === 'error' && (
+            <>
+              <DangerToast message="제출에 실패하였습니다." />
+              <div>입력값을 확인해주세요.</div>
+            </>
+          )}
+        </Modal.Body>
+      </Modal>
     </Paper>
   );
 }

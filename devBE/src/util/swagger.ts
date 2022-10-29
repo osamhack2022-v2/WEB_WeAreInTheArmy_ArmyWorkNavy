@@ -8,5 +8,5 @@ export function setUpSwagger(app: INestApplication): void {
 		.setVersion('1.0.0')
 		.build();
 	const document = SwaggerModule.createDocument(app, config);
-	SwaggerModule.setup('/absproxy/3000/swagger', app, document);
+	SwaggerModule.setup('/swagger', app, document);
 }
