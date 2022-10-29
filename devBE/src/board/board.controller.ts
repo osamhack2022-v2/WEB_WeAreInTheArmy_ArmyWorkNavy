@@ -49,6 +49,11 @@ export class BoardController {
     return this.boardService.getAllUndoneBoards();
   }
 
+  @Get("/getAllDoneBoards")
+  getAllDoneBoards(): Promise<Board[]> {
+    return this.boardService.getAllDoneBoards();
+  }
+
   @Get("/getBoardsByIdentifier/:identifier")
   getBoardsByIdentifier(@Param("identifier") identifier: string, @Req() req): Promise<Board[]> {
     return this.boardService.getBoardsbyIdentifier(identifier);
