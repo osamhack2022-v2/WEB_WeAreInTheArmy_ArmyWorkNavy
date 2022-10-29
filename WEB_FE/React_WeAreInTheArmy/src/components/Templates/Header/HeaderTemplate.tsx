@@ -14,11 +14,11 @@ export default function HeaderTemplate() {
       <header className="w-screen h-[120px]">
         <FlexContainer className="h-1/4 justify-center items-center bg-secondary text-white">
           <Text size="text-base" className="font-bold">
-            우리의 영원한 친구{' '}
+            힘들 땐 함께,
             <span role="img" aria-label="writing hand">
-              😟
+              🤝
             </span>{' '}
-            대한민국 국군
+            함께 잘사는 국민의 나라
           </Text>
         </FlexContainer>
         <FlexContainer className="justify-center h-3/4 bg-main drop-shadow-lg">
