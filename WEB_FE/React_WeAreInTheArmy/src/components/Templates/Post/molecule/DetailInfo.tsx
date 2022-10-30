@@ -1,6 +1,7 @@
 import HLText from 'src/components/UI/HLText';
 import Text from 'src/components/UI/Text';
 import { RequestTypes } from 'src/type';
+import { statusConverter, typeConverter } from 'src/util/utils';
 import CombiInfo from '../atom/CombiInfo';
 
 export default function DetailInfo({
@@ -21,7 +22,7 @@ export default function DetailInfo({
         <HLText>{title}</HLText>
       </CombiInfo>
       <CombiInfo label="요청 종류" isEssential>
-        <HLText>{type}</HLText>
+        <HLText>{typeConverter(type)}</HLText>
       </CombiInfo>
       <CombiInfo label="문의내용" isEssential>
         <HLText>{description}</HLText>

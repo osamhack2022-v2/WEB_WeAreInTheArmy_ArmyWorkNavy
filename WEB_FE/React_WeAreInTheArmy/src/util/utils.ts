@@ -1,4 +1,4 @@
-import { Accept, AcceptanceStatus } from 'src/type';
+import { Accept, AcceptanceStatus, RequestTypes } from 'src/type';
 import { client } from './client';
 
 export const statusConverter = (accept: AcceptanceStatus): string => {
@@ -12,6 +12,20 @@ export const statusConverter = (accept: AcceptanceStatus): string => {
     default:
       return 'Error';
   }
+};
+
+export const typeConverter = (type: RequestTypes): string => {
+  switch (type) {
+    case RequestTypes.DEFAULT:
+      return '일반';
+    case RequestTypes.DISASTOR:
+      return '재난';
+    case RequestTypes.ENVIROMENTAL:
+      return '환경';
+    case RequestTypes.SOCIAL:
+      return '사회';
+  }
+  return '';
 };
 
 export function setAuthroizationToken(token: string) {
