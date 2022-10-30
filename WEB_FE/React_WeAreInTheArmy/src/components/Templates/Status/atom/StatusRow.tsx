@@ -18,7 +18,7 @@ export default function StatusRow({
 }: Post) {
   const navigate = useNavigate();
   return (
-    <TableRow className="text-center">
+    <TableRow>
       <TableCell className="p-5 font-bold">{idx}</TableCell>
       <TableCell>
         <div className="font-bold">

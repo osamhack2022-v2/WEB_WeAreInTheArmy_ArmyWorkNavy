@@ -7,7 +7,7 @@ export const URL = [
   },
   {
     name: '신청현황',
-    to: '/status',
+    to: '/myBoard',
     src: '/assets/imgs/Header/hamburger.png',
   },
   {

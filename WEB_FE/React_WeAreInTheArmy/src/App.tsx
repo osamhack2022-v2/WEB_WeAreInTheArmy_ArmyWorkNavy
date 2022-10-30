@@ -19,6 +19,7 @@ import { Post } from './type';
 import ManagementTemplate from './components/Templates/Management/ManagementTemplate';
 import ManagementAcceptTemplate from './components/Templates/Management/ManagementAcceptTemplate';
 import { useUserState } from './context/UserContext';
+import { MyBoardTemplate } from './components/Templates/MyBoard/MyBoardTemplate';
 
 function App() {
   const state = useUserState();
@@ -72,6 +73,7 @@ function App() {
               />
               <Route path="/test" element={<TestTemplate />} />
               <Route path="/management" element={<ManagementTemplate />} />
+              <Route path="/myBoard" element={<MyBoardTemplate />} />
             </Routes>
           </TemplateWrapper>
         </FlexContainer>

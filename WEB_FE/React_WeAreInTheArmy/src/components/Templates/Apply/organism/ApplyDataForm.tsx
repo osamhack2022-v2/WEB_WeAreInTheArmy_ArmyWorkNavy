@@ -32,9 +32,9 @@ export default function ApplyDataForm() {
         <RequestCategorySelect
           label="요청분류"
           options={[
-            { label: 'help', value: RequestTypes.DEFAULT },
-            { label: 'help', value: RequestTypes.DISASTOR },
-            { label: 'help', value: RequestTypes.ENVIROMENTAL },
+            { label: '일반', value: RequestTypes.DEFAULT },
+            { label: '재난', value: RequestTypes.DISASTOR },
+            { label: '환경', value: RequestTypes.ENVIROMENTAL },
             { label: '사회', value: RequestTypes.SOCIAL },
           ]}
           dispatch={setRequestCategory}
