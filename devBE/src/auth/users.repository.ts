@@ -2,7 +2,7 @@ import { CustomRepository } from "src/database/typeorm-ex.decorator";
 import { Repository } from "typeorm";
 import { User } from './entities/users.entity';
 import { CreateUserDto } from './dto/create-user.dto';
-import { ConflictException, InternalServerErrorException } from "@nestjs/common";
+import { ConflictException } from "@nestjs/common";
 import * as bcrypt from "bcryptjs";
 
 @CustomRepository(User)
@@ -23,10 +23,9 @@ export class UsersRepository extends Repository<User> {
             if (error.errno === 1062) {
                 throw new ConflictException("The username already exists.");
             } else {
-                throw new InternalServerErrorException();
+                throw error;
             }
         }
-
         return user;
     }
 }

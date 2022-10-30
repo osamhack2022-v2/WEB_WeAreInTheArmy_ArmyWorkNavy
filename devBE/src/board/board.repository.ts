@@ -219,4 +219,48 @@ export class BoardRepository extends Repository<Board> {
         }
     }
 
+    async checkLike(idx: number, user: User): Promise<boolean> {
+        try {
+            const board = await this.findOneBy({idx});
+
+            let likes: string[];
+            if(!board.likes) {
+                likes = []
+            } else {
+                likes = JSON.parse(board.likes);
+            }
+            
+            return likes.includes(user.identifier);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    async toggleLike(idx: number, user: User): Promise<Board> {
+        try {
+            const board = await this.findOneBy({idx});
+
+            let likes: string[];
+            if(!board.likes) {
+                likes = []
+            } else {
+                likes = JSON.parse(board.likes);
+            }
+
+            if (!likes.includes(user.identifier)) {
+                likes.push(user.identifier);
+            } else {
+                const index = likes.indexOf(user.identifier);
+                likes.splice(index,1);
+            }
+
+            board.likes = JSON.stringify(likes);
+            await this.save(board);
+            return board;
+
+        } catch (err) {
+            throw err;
+        }
+    }
+
 }

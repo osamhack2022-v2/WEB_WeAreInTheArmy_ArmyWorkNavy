@@ -133,26 +133,11 @@ export class BoardService {
     return this.boardRepository.setDone(idx, user);
   }
 
-
-  /*
-  create(createBoardDto: CreateBoardDto) {
-    return 'This action adds a new board';
+  async checkLike(idx:number, user:User): Promise<boolean> {
+    return this.boardRepository.checkLike(idx, user);
   }
 
-  findAll() {
-    return `This action returns all board`;
+  async toggleLike(idx:number, user:User): Promise<Board> {
+    return this.boardRepository.toggleLike(idx, user);
   }
-
-  findOne(id: number) {
-    return `This action returns a #${id} board`;
-  }
-
-  update(id: number, updateBoardDto: UpdateBoardDto) {
-    return `This action updates a #${id} board`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} board`;
-  }
-  */
 }
