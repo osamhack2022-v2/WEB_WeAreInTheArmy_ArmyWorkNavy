@@ -29,7 +29,7 @@ export default function MainTemplate() {
         </FlexContainer>
         <Actions />
         <FlexContainer className="w-full flex-col items-center mb-10">
-          {localStorage.getItem('jwtToken') ? (
+          {localStorage.getItem('jwtToken') && posts.length > 0 ? (
             <>
               <Text
                 size="text-4xl"
