@@ -2,7 +2,9 @@
 <p>
     <img src="https://user-images.githubusercontent.com/78669550/193375765-98e1234b-9095-4ca7-b136-b71c0fb4ea59.png" />
 </p>
-"여긴 군대지" 서비스를 통해 재난에 맞서
+"여긴 군대지"는 피해를 입은 국민들이 정상적인 삶을 신속하게 회복할 수 있도록 국민과 국군을 연결해주는 플랫폼입니다.    
+
+  "여긴 군대지" 서비스를 통해 재난에 맞서
   군과 사회가 함께 어우러 살아갈 수 있는 기회가 되었으면 합니다.
 
 ## 기획 의도 | Service Needs
@@ -47,6 +49,12 @@
  장병 혹은 군 간부는 온라인으로 해당 작업에 자진하여 지원할 수 있습니다. 만일 작업이 끝나고 난 뒤에는 해당 인원들에게 봉사시간과 상점을 부여받을 수 있도록 개발합니다. 이를 위해 봉사기관과 협업할 수 있도록 서비스를 기획하여야 합니다. 
 
  대민지원을 나간 부대는 페이지에 영구히 기록됩니다. 추후에 부대에 기부할 수 있는 기능을 추가하여 대민지원을 통해 군과 사회가 함께 국방력을 증진시킬 수 있는 기회가 되었으면 합니다. 
+ 
+## 기대 효과
+- 신속하고 정확하게 효율적인 재난 피해 극복 가능
+- 군에 대한 국민의 신뢰도 상승
+- 용사에게는 큰 동기가 피해지역에는 도움을 줌
+- 쉽고 간편하게 도움이 필요한 위치 파악
 
 ## 권장 사양 | Prerequisities
 * ECMAScript 6 지원 브라우저 사용
@@ -70,29 +78,29 @@ $ yarn run dev or npm run dev
 
 
 ## 기술 스택 | Technique Used
-### 기획, UI/UX
-- `Notion`
-- `Figma`
-### Front-end
- - `Typescript`
- - `React, vite`
- - `Kakao Map Api`
- - `Tailwindcss, flowbite-react`
-
-### Back-end
+### 프론트엔드
+- `React`
+- `Tailwind CSS`
+- `TypeScript`
+### 백엔드
+- `NestJS`
+- `TypeScript`
+- `MySQL`
 - `Azure`
-- `NextJS`
-- `MySql`
+### 기획 및 디자인
+- `Notion` (문서, 회의 내용 기록)
+- `Figma`
+- `Slack` (회의 및 일정관리)
+### 오픈소스
+- `Kakao Map API`
+- `Git` (소스코드 관리)
 
 ### 팀 정보 | Team Information
-| 이름 | 역할 | 이메일 | Github ID |
-|---|---|---|---|
-| 공민제 | 팀장, 프론트엔드 | minje621@gmail.com | minai621 |
-| 이혜성 | 백엔드 | mireflare@gmail.com | mireflare |
-| 황준하 | PM 및 디자인 | juneha2002@gmail.com | ecrire06 |
-
-- 소스코드 관리 : `Github`
-- 회의 및 일정관리 : `Slack`
-- 문서, 회의 내용 기록 : `Notion`
+| 이름 | 역할 | 이메일 | Github ID | 소속 |
+|---|---|---|---|---|
+| 공민제 | 팀장, 프론트엔드 | minje621@gmail.com | minai621 | 해군 |
+| 이혜성 | 백엔드 | mireflare@gmail.com | mireflare | 상근 |
+| 황준하 | PM 및 디자인 | juneha2002@gmail.com | ecrire06 | 육군 |
 
 ## 저작권 안내
+`license.md` 참고
