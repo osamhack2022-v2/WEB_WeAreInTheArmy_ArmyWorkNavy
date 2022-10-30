@@ -25,7 +25,7 @@ export default function PostTemplate() {
     identifier: '',
     participants: '',
     status: AcceptanceStatus.PENDING,
-    likes,
+    likes: '',
   });
   const locations = useLocation();
   useEffect(() => {
