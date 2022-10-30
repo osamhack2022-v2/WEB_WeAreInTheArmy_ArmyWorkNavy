@@ -12,15 +12,15 @@ export enum AccountTypes {
 @Entity()
 export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
-    @ApiProperty({ description: "[primary] index" })
+    @ApiProperty({ description: "[primary] index of user account" })
     idx: number;
 
     @Column({ unique: true })
-    @ApiProperty({ description: "[unique] identifier" })
+    @ApiProperty({ description: "[unique] identifier(ID)" })
     identifier: string;
 
     @Column()
-    @ApiProperty({ description: "password" })
+    @ApiProperty({ description: "password(hashed)" })
     password: string;
 
     @Column({
