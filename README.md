@@ -53,23 +53,36 @@
 * 권장: Google Chrome 버젼 77 이상
 
 ## 설치 방법 | How to Install
+# 백엔드
 ```bash
 $ git clone https://github.com/osamhack2022/WEB_WeAreInTheArmy_ArmyWorkNavy.git
-$ yarn or npm install
-$ yarn start or npm run start
+$ cd devBe
+$ npm install or yarn
+$ yarn run start or npm run start
 ```
+# 프론트엔드
+```bash
+$ git clone https://github.com/osamhack2022/WEB_WeAreInTheArmy_ArmyWorkNavy.git
+$ cd WEB_FE/React_WeAreInTheArmy/
+$ npm install or yarn
+$ yarn run dev or npm run dev
+```
+
+
 ## 기술 스택 | Technique Used
 ### 기획, UI/UX
 - `Notion`
 - `Figma`
 ### Front-end
- -  Typescript
- -  React.js 
- -  UI framework
+ - `Typescript`
+ - `React, vite`
+ - `Kakao Map Api`
+ - `Tailwindcss, flowbite-react`
+
 ### Back-end
 - `Azure`
 - `NextJS`
-- DB
+- `MySql`
 
 ### 팀 정보 | Team Information
 | 이름 | 역할 | 이메일 | Github ID |
@@ -81,3 +94,5 @@ $ yarn start or npm run start
 - 소스코드 관리 : `Github`
 - 회의 및 일정관리 : `Slack`
 - 문서, 회의 내용 기록 : `Notion`
+
+## 저작권 안내
