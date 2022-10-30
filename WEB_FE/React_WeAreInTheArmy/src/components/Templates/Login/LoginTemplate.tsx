@@ -73,7 +73,7 @@ export default function LoginTemplate() {
             />
           </FlexContainer>
           <FlexContainer className="items-center mb-5">
-            <Text size="text-base" className="mr-5 font-bold w-[7px]">
+            <Text size="text-base" className="mr-5 font-bold w-[70px]">
               비밀번호
             </Text>
             <Input
