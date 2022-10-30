@@ -114,6 +114,18 @@ export class BoardController {
     return this.boardService.setDone(idx, req.user);
   }
 
+  @Get("/checkLike/:idx")
+  @UsePipes(ValidationPipe)
+  checkLike(@Param("idx") idx: number, @Req() req): Promise<boolean> {
+    return this.boardService.checkLike(idx, req.user);
+  }
+
+  @Patch("/toggleLike/:idx")
+  @UsePipes(ValidationPipe)
+  toggleLike(@Param("idx") idx: number, @Req() req): Promise<Board> {
+    return this.boardService.toggleLike(idx, req.user);
+  }
+
   /*
   @Post()
   create(@Body() createBoardDto: CreateBoardDto) {

@@ -61,6 +61,10 @@ export class Board extends BaseEntity {
     @ApiProperty({ description: "Acceptance Status: pending, accepted, denied" })
     status: AcceptanceStatus;
 
+    @Column({type: "text", nullable: true})
+    @ApiProperty({ description: "likes" })
+    likes: string;
+
     @Column()
     @ApiProperty({ description: "done or not" })
     done: boolean;

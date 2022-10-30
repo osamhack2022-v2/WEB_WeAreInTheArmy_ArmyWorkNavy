@@ -3,45 +3,45 @@ import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString } from "class-validat
 import { AccountTypes } from "../entities/users.entity";
 
 export class CreateUserDto {
-    
+
+    @ApiProperty({description: "identifier(ID)"})
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({description: "identifier"})
     identifier: string;
 
+    @ApiProperty({description: "password(raw)"})
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({description: "password"})
     password: string;
 
+    @ApiProperty({description: "account type: administrator, citizen, millitary"})
     @IsNotEmpty()
     @IsEnum(AccountTypes)
-    @ApiProperty({description: "account type: administrator, citizen, millitary"})
     type: AccountTypes;
 
+    @ApiProperty({description: "user name"})
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({description: "user name"})
     name: string;
 
+    @ApiProperty({description: "phone number"})
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({description: "phone number"})
     phone: string;
 
+    @ApiProperty({description: "[opt] organization"})
     @IsOptional()
     @IsString()
-    @ApiProperty({description: "[opt] organization"})
     organization: string;
 
+    @ApiProperty({description: "[opt] email address"})
     @IsOptional()
     @IsString()
     @IsEmail()
-    @ApiProperty({description: "[opt] email address"})
     email: string;
 
+    @ApiProperty({description: "[opt] address"})
     @IsOptional()
     @IsString()
-    @ApiProperty({description: "[opt] address"})
     address: string;
 }
