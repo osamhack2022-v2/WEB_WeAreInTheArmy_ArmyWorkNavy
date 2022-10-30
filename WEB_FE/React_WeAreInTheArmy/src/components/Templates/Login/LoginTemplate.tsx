@@ -74,7 +74,7 @@ export default function LoginTemplate() {
           </FlexContainer>
           <FlexContainer className="items-center mb-5">
             <Text size="text-base" className="mr-5 font-bold">
-              아이디
+              비밀번호
             </Text>
             <Input
               value={password}
