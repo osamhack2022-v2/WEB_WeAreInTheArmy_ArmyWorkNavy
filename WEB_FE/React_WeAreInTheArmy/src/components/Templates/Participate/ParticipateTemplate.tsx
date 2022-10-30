@@ -138,10 +138,9 @@ export default function ParticipateTemplate() {
           <strong>대민지원 선택하기</strong>
         </Modal.Header>
         <Modal.Body>
-          {/* 고쳐야 함 */}
           <Table>
             <TableHead className="font-bold bg-gray-200 ">
-              <TableHeadCell>id</TableHeadCell>
+              <TableHeadCell>번호</TableHeadCell>
               <TableHeadCell>제목</TableHeadCell>
               <TableHeadCell>위치</TableHeadCell>
               <TableHeadCell>설명</TableHeadCell>
