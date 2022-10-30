@@ -21,7 +21,12 @@ export default function RequestCategorySelect({
 }: RequestCategorySelectProps) {
   return (
     <DefaultInformation label={label} isEssential>
-      <Select className="w-3/4" onChange={dispatch}>
+      <Select
+        className="w-3/4"
+        onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+          dispatch(event.target.value)
+        }
+      >
         {options.map(({ label, value }: Options) => (
           <Option key={label} value={value}>
             {label}
