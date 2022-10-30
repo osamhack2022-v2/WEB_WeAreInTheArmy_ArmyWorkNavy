@@ -61,14 +61,14 @@
 * 권장: Google Chrome 버젼 77 이상
 
 ## 설치 방법 | How to Install
-# 백엔드
+### 백엔드
 ```bash
 $ git clone https://github.com/osamhack2022/WEB_WeAreInTheArmy_ArmyWorkNavy.git
 $ cd devBe
 $ npm install or yarn
 $ yarn run start or npm run start
 ```
-# 프론트엔드
+### 프론트엔드
 ```bash
 $ git clone https://github.com/osamhack2022/WEB_WeAreInTheArmy_ArmyWorkNavy.git
 $ cd WEB_FE/React_WeAreInTheArmy/
