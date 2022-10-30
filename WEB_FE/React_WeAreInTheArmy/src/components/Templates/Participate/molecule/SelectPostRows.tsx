@@ -6,16 +6,26 @@ export default function SelectPostRows({
   title,
   location,
   description,
+  likes,
   setSelectPost,
 }: {
   idx: number;
   title: string;
   location: string;
   description: string;
-  setSelectPost: ({ idx, title }: { idx: number; title: string }) => void;
+  likes?: string;
+  setSelectPost: ({
+    idx,
+    title,
+    likes,
+  }: {
+    idx: number;
+    title: string;
+    likes?: string;
+  }) => void;
 }) {
   return (
-    <TableRow onClick={() => setSelectPost({ idx, title })}>
+    <TableRow onClick={() => setSelectPost({ idx, title, likes })}>
       <TableCell>{idx}</TableCell>
       <TableCell>{title}</TableCell>
       <TableCell>{location}</TableCell>

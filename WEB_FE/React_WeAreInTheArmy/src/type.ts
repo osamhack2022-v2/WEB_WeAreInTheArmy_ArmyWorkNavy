@@ -18,6 +18,7 @@ export type Post = {
   title: string;
   type: string;
   updatedAt: string;
+  likes: string;
 };
 
 export enum Accept {

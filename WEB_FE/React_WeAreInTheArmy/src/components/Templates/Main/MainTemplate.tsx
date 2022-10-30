@@ -15,6 +15,7 @@ export default function MainTemplate() {
 
   useEffect(() => {
     client.get('/api/board/getAllBoards').then((res) => {
+      console.log(res.data.like);
       setPosts(res.data);
       setCount(res.data.length);
     });

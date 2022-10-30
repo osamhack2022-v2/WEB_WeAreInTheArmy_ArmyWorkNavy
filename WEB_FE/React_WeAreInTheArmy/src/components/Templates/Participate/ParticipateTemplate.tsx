@@ -31,7 +31,8 @@ export default function ParticipateTemplate() {
   const [selectPost, setSelectPost] = useState<{
     idx: number;
     title: string;
-  }>({ idx: 0, title: '' });
+    likes?: string;
+  }>({ idx: 0, title: '', likes: undefined });
   const [name, setName] = useState<string>('');
   const [unit, setUnit] = useState<string>('');
   const [sn, setSn] = useState<string>('');
@@ -59,7 +60,9 @@ export default function ParticipateTemplate() {
   useEffect(() => {
     client.get('/api/board/getAllBoards').then((res) => setPosts(res.data));
   }, []);
-
+  if (selectPost.likes !== undefined) {
+    console.log(JSON.parse(selectPost.likes));
+  }
   return (
     <Paper className="w-[900px]">
       <SemiHeader
@@ -110,7 +113,23 @@ export default function ParticipateTemplate() {
           />
         </FlexContainer>
         <FlexContainer className="w-full justify-between p-5">
-          <Button className="bg-white text-black">❤️ {count}</Button>
+          <Button
+            className="bg-white text-black"
+            onClick={() => {
+              client
+                .patch('/api/board/toggleLike/' + selectPost.idx)
+                .then((res) => {
+                  if (res.data.like !== null) {
+                    setSelectPost({ ...selectPost, likes: res.data.likes });
+                  }
+                });
+            }}
+          >
+            ❤️{' '}
+            {selectPost.likes !== undefined
+              ? JSON.parse(selectPost.likes).length
+              : '0'}
+          </Button>
           <Button onClick={handleSubmitParticipate}>참여하기</Button>
         </FlexContainer>
       </FlexContainer>
@@ -137,6 +156,7 @@ export default function ParticipateTemplate() {
                     title={post.title}
                     location={post.location}
                     description={post.description}
+                    likes={post.likes}
                     setSelectPost={setSelectPost}
                   />
                 ))}
