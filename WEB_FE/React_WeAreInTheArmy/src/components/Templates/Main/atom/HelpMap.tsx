@@ -65,7 +65,7 @@ const HelpMap = ({ posts }: { posts: Post[] }) => {
               key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}-${index}`}
               position={marker.position}
             >
-              <FlexContainer className="label rounded-full bg-red-400 w-24 h-24 flex-col justify-center items-center opacity-20 text-sm">
+              <FlexContainer className="label rounded-full bg-red-400 w-24 h-24 flex-col bg-red-500 justify-center items-center opacity-20 text-sm">
                 <span className="z-10">{marker.content}</span>
               </FlexContainer>
             </CustomOverlayMap>
