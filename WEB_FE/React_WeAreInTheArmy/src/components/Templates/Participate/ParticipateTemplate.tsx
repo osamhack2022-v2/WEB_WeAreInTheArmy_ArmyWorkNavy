@@ -162,7 +162,7 @@ export default function ParticipateTemplate() {
             </TableBody>
           </Table>
           <FlexContainer className="items-center justify-end p-3">
-            <strong className="mr-3 whitespace-nowrap">
+            <strong className="mr-3 w-[500px] text-ellipsis overflow-hidden">
               선택한 게시글: {selectPost.title}
             </strong>
             <Button onClick={() => setOpen(false)}>확인</Button>
