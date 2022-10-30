@@ -107,7 +107,7 @@ export default function SignupTemplate() {
 
   return (
     <FlexContainer className="mt-[50px]">
-      <Paper className="w-[900px] h-[700px] justify-evenly">
+      <Paper className="w-[900px] h-[800px] justify-evenly">
         <div className="w-full text-center mt-5">
           <Text size="text-3xl" className="font-bold">
             회원가입
