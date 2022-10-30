@@ -59,7 +59,7 @@ export default function LoginTemplate() {
         <span className="w-full p-0.5 bg-slate-200 my-5"></span>
         <FlexContainer className="flex-col">
           <FlexContainer className="items-center mb-5">
-            <Text size="text-base" className="mr-5 font-bold">
+            <Text size="text-base" className="mr-5 font-bold w-[50px]">
               아이디
             </Text>
             <Input
@@ -73,7 +73,7 @@ export default function LoginTemplate() {
             />
           </FlexContainer>
           <FlexContainer className="items-center mb-5">
-            <Text size="text-base" className="mr-5 font-bold">
+            <Text size="text-base" className="mr-5 font-bold w-[50px]">
               비밀번호
             </Text>
             <Input
