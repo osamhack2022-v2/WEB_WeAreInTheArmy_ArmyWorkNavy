@@ -30,6 +30,7 @@ export default function ManagementAcceptTemplate() {
     identifier: '',
     participants: '',
     status: AcceptanceStatus.PENDING,
+    likes: '',
   });
   const locations = useLocation();
   const navigate = useNavigate();

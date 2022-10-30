@@ -15,6 +15,7 @@ export default function StatusRow({
   type,
   updatedAt,
   status,
+  likes,
 }: Post) {
   const navigate = useNavigate();
   return (
