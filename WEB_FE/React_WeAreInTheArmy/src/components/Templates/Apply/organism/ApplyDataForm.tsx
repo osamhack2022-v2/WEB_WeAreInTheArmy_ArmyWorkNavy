@@ -1,8 +1,5 @@
 import { RequestTypes } from 'src/type';
-import {
-  RequestCategory,
-  useApplyDataDispatch,
-} from '../../../../context/ApplyContext';
+import { useApplyDataDispatch } from '../../../../context/ApplyContext';
 import FlexContainer from '../../../UI/FlexContantainer';
 import Text from '../../../UI/Text';
 import DescriptionArea from '../molecule/DescriptionArea';
@@ -13,8 +10,8 @@ export default function ApplyDataForm() {
   const dispatch = useApplyDataDispatch();
   const setTitle = (value: string) =>
     dispatch({ type: 'SET_TITLE', title: value });
-  const setRequestCategory = (value: RequestCategory) =>
-    dispatch({ type: 'SET_REQUESTCATEGORY', requestCategory: value });
+  const setRequestCategory = (value: RequestTypes) =>
+    dispatch({ type: 'SET_REQUEST_TYPES', requestTypes: value });
   const setDescription = (value: string) =>
     dispatch({ type: 'SET_DESCRIPTION', description: value });
 

@@ -1,6 +1,7 @@
 import Option from '../../../UI/Option';
 import Select from '../../../UI/Select';
 import DefaultInformation from '../../../UI/DefaultInformation';
+import { RequestTypes } from 'src/type';
 
 interface RequestCategorySelectProps {
   label: string;
@@ -10,7 +11,7 @@ interface RequestCategorySelectProps {
 
 type Options = {
   label: string;
-  value: string;
+  value: RequestTypes;
 };
 
 export default function RequestCategorySelect({

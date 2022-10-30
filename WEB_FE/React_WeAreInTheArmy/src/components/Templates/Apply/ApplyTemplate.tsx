@@ -28,31 +28,27 @@ export default function ApplyTemplate() {
   const [modal, setModal] = useState<string>('');
   const defaultInformationState = useDefaultInformationState();
   const applyDataState = useApplyDataState();
-  const createBoard = () => {
-    client
-      .post(
-        '/api/board/createBoard',
-        {
-          type: applyDataState.requestCategory,
-          title: applyDataState.title,
-          description: applyDataState.description,
-          location: defaultInformationState.location,
-          admit: true,
-          image: 'string',
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
-          },
-        },
-      )
+  console.log(applyDataState, defaultInformationState);
+  const createBoard = async () => {
+    console.log('요청');
+    await client
+      .post('/api/board/createBoard', {
+        type: applyDataState.requestTypes,
+        title: applyDataState.title,
+        description: applyDataState.description,
+        location: defaultInformationState.location,
+        admit: true,
+        image: 'string',
+      })
       .then((res) => {
         setModal('success');
       })
       .catch((e) => {
+        console.log(e);
         setModal('error');
       });
   };
+
   const navigate = useNavigate();
   return (
     <Paper className="w-[900px]">

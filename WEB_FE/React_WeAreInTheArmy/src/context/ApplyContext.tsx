@@ -1,4 +1,5 @@
 import React, { createContext, Dispatch, useContext, useReducer } from 'react';
+import { RequestTypes } from 'src/type';
 
 type DefaultInfomationState = {
   name: string;
@@ -7,15 +8,9 @@ type DefaultInfomationState = {
   location?: string;
 };
 
-export type RequestCategory =
-  | 'environmental'
-  | 'disastor'
-  | 'social'
-  | 'default';
-
 type ApplyDataState = {
   title: string;
-  requestCategory: RequestCategory;
+  requestTypes: RequestTypes;
   description: string;
 };
 
@@ -27,7 +22,7 @@ type DefaultInfomationActions =
 
 type ApplyDataActions =
   | { type: 'SET_TITLE'; title: string }
-  | { type: 'SET_REQUESTCATEGORY'; requestCategory: RequestCategory }
+  | { type: 'SET_REQUEST_TYPES'; requestTypes: RequestTypes }
   | { type: 'SET_DESCRIPTION'; description: string };
 
 type DefaultInfomationActionsDispatch = Dispatch<DefaultInfomationActions>;
@@ -83,10 +78,10 @@ function ApplyDataReducer(
         ...state,
         title: action.title,
       };
-    case 'SET_REQUESTCATEGORY':
+    case 'SET_REQUEST_TYPES':
       return {
         ...state,
-        requestCategory: action.requestCategory,
+        requestTypes: action.requestTypes,
       };
     case 'SET_DESCRIPTION':
       return {
@@ -122,7 +117,7 @@ export function DefaultInformationProvider({
 export function ApplyDataProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(ApplyDataReducer, {
     title: '',
-    requestCategory: 'default',
+    requestTypes: RequestTypes.DEFAULT,
     description: '',
   });
 
